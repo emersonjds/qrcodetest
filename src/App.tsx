@@ -1,5 +1,4 @@
 import "./App.css";
-
 import qrCode from "./assets/qrcode.png";
 
 function App() {
