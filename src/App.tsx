@@ -2,6 +2,9 @@ import "./App.css";
 import qrCode from "./assets/qrcode.png";
 
 function App() {
+    /**
+     * #TODO: Add config with url schema in Android
+     */
   return (
     <>
       <div className="bg-blue-500 w-full h-full p-4 flex items-center justify-center">
