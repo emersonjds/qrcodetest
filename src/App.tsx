@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     fetch("https://qrcodeapi-d36o.onrender.com/")
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => alert(data.message));
   }, []);
 
   /**
