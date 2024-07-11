@@ -7,7 +7,7 @@ function App() {
 
   //create an useEffect that do a request for an api local
   useEffect(() => {
-    fetch("http://localhost:3000/")
+    fetch("https://qrcodeapi-d36o.onrender.com/")
       .then((response) => response.json())
       .then((data) => console.log(data));
   }, []);
