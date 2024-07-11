@@ -1,11 +1,11 @@
 import "./App.css";
-import qrCode from "./assets/qrcode.png";
-import QRCodeScanner from "./QrCode";
+// import qrCode from "./assets/qrcode.png";
+import QrCodeReader from "./QrCodeReader";
 
 function App() {
-    /**
-     * #TODO: Add config with url schema in Android
-     */
+  /**
+   * #TODO: Add config with url schema in Android
+   */
   return (
     // <>
     //   <div className="bg-blue-500 w-full h-full p-4 flex items-center justify-center">
@@ -16,7 +16,8 @@ function App() {
     //     </div>
     //   </div>
     // </>
-    <QRCodeScanner />
+    // <QRCodeScanner />
+    <QrCodeReader />
   );
 }
 
