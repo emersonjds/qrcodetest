@@ -1,23 +1,34 @@
+import { useEffect } from "react";
 import "./App.css";
-// import qrCode from "./assets/qrcode.png";
-import QrCodeReader from "./QrCodeReader";
+import qrCode from "./assets/qrcode.png";
+// import QrCodeReader from "./QrCodeReader";
 
 function App() {
+
+  //create an useEffect that do a request for an api local
+  useEffect(() => {
+    fetch("http://localhost:3000/")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }, []);
+
   /**
    * #TODO: Add config with url schema in Android
    */
   return (
-    // <>
-    //   <div className="bg-blue-500 w-full h-full p-4 flex items-center justify-center">
-    //     <div className="h-1/2 w-1/2 flex items-center justify-center p-3">
-    //       <figure>
-    //         <img src={qrCode} alt="Logo" />
-    //       </figure>
-    //     </div>
-    //   </div>
-    // </>
+    <>
+      <div className="bg-blue-500 w-full h-full p-4 flex items-center justify-center">
+        <div className="h-1/2 w-1/2 flex items-center justify-center p-3">
+          <figure>
+            <img src={qrCode} alt="Logo" />
+          </figure>
+        </div>
+      </div>
+    </>
     // <QRCodeScanner />
-    <QrCodeReader />
+    // <div>
+    //   <QrCodeReader />
+    // </div>
   );
 }
 
