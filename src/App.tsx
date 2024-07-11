@@ -1,16 +1,40 @@
 import { useEffect } from "react";
 import "./App.css";
-import qrCode from "./assets/qrcode.png";
+import axios from 'axios';
+
+// import qrCode from "./assets/qrcode.png";
 // import QrCodeReader from "./QrCodeReader";
 
 function App() {
 
-  //create an useEffect that do a request for an api local
   useEffect(() => {
-    fetch("https://qrcodeapi-d36o.onrender.com/")
-      .then((response) => response.json())
-      .then((data) => alert(data.message));
-  }, []);
+    const checkDevice = async () => {
+        try {
+            const response = await axios.get('https://qrcodeapi-d36o.onrender.com');
+            const { device } = response.data;
+            
+            if (device === 'android') {
+                window.location.href = 'intent://portonet#Intent;scheme=portonet://abrirappportonet;package=br.com.portoseguro.portonetmobile;end;';
+            } else if (device === 'ios') {
+                window.location.href = 'www.google.com';
+            } else {
+                // Handle unknown devices or provide a fallback
+                alert('Device not recognized. Please use an Android or iOS device.');
+            }
+        } catch (error) {
+            console.error('Error checking device', error);
+        }
+    };
+
+    checkDevice();
+}, []);
+
+  //create an useEffect that do a request for an api local
+  // useEffect(() => {
+  //   fetch("https://qrcodeapi-d36o.onrender.com/")
+  //     .then((response) => response.json())
+  //     .then((data) => alert(data.message));
+  // }, []);
 
   /**
    * #TODO: Add config with url schema in Android
