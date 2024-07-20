@@ -2,30 +2,30 @@ import { useEffect } from "react";
 import "./App.css";
 import axios from 'axios';
 
-// import qrCode from "./assets/qrcode.png";
+import qrCode from "./assets/qrcode.png";
 // import QrCodeReader from "./QrCodeReader";
 
 function App() {
 
-  useEffect(() => {
-    const checkDevice = async () => {
-        try {
-            const response = await axios.get('https://qrcodeapi-d36o.onrender.com');
-            const { device } = response.data;
-            
-            if (device === 'android') {
-                window.location.href = 'intent://portonet#Intent;scheme=portonet://abrirappportonet;package=br.com.portoseguro.portonetmobile;end;';
-            } else if (device === 'ios') {
-                window.location.href = 'www.google.com';
-            } else {
-                // Handle unknown devices or provide a fallback
-                alert('Device not recognized. Please use an Android or iOS device.');
-            }
-        } catch (error) {
-            console.error('Error checking device', error);
+  const checkDevice = async () => {
+    try {
+        const response = await axios.get('https://qrcodeapi-d36o.onrender.com');
+        const { device } = response.data;
+        
+        if (device === 'android') {
+            window.location.href = 'intent://portonet#Intent;scheme=portonet://abrirappportonet;package=br.com.portoseguro.portonetmobile;end;';
+        } else if (device === 'ios') {
+            window.location.href = 'www.google.com';
+        } else {
+            // Handle unknown devices or provide a fallback
+            alert('Device not recognized. Please use an Android or iOS device.');
         }
-    };
+    } catch (error) {
+        console.error('Error checking device', error);
+    }
+};
 
+  useEffect(() => {
     checkDevice();
 }, []);
 
@@ -36,9 +36,6 @@ function App() {
   //     .then((data) => alert(data.message));
   // }, []);
 
-  /**
-   * #TODO: Add config with url schema in Android
-   */
   return (
     <>
       <div className="bg-blue-500 w-full h-full p-4 flex items-center justify-center">
